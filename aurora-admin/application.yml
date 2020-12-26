@@ -1,0 +1,45 @@
+spring:
+    application:
+        name: aurora-config
+    cloud:
+        inetutils:
+          default-ip-address: 192.168.100.126
+     ##config 配置
+        config:
+          server:
+            ####git路径和 用户名密码
+            git:
+              uri: https://github.com/PAN-Aurora/aurora-cloud-config.git
+              username: pan_2604390947@163.com
+              password: phq3479157
+              ##对应git地址下文件所在根目录
+              search-paths: aurora-admin
+              ##使用默认分支  可以是主分支 也可以是其他分支
+              default-label: master
+
+   ###表示让 config-server 从 classpath 下查找配置，而不是去 Git 仓库中查找
+#    profiles:
+#      active: native
+
+##服务端口
+server:
+  port: 1100
+
+eureka:
+  instance:
+    hostname: 192.168.100.126
+    ##以ip注册到注册中心
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.inetutils.default-ip-address}:${server.port}
+
+
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.100.126:8671/eureka/
+
+
+
+
+
+
+
