@@ -1,5 +1,5 @@
 server:
-  port: 1800
+  port: 1200
 spring:
     profiles: test
     application:
